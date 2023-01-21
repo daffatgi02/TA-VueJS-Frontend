@@ -18,16 +18,20 @@
     <button @click="getUsers">Get Users</button>
   </div>
   <createuser />
+  <updateuser />
+ 
 
 </template>
 
 <script>
 import createuser from './components/createuser.vue';
+import updateuser from './components/updateuser.vue';
 import axios from 'axios';
 
 export default {
   components:{
-    createuser
+    createuser,
+    updateuser
   },
   data() {
     return {

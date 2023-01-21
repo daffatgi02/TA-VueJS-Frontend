@@ -6,7 +6,6 @@
         <input type="text" v-model="selectedUser.agama" placeholder="Agama">
         <button type="submit">Ubah</button>
       </form>
-      ...
     </div>
   </template>
   
