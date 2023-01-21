@@ -3,7 +3,7 @@
       <form @submit.prevent="updateUser" v-if="selectedUser">
         <input type="text" v-model="selectedUser.nama" placeholder="Nama">
         <input type="text" v-model="selectedUser.umur" placeholder="Umur">
-        <input type="text" v-model="selectedUser.agama" placeholder="Agama">
+        <input type="text" v-model="selectedUser.email" placeholder="email">
         <button type="submit">Ubah</button>
       </form>
     </div>
