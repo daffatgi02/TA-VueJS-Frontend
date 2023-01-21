@@ -17,12 +17,18 @@
     </table>
     <button @click="getUsers">Get Users</button>
   </div>
+  <createuser />
+
 </template>
 
 <script>
+import createuser from './components/createuser.vue';
 import axios from 'axios';
 
 export default {
+  components:{
+    createuser
+  },
   data() {
     return {
       users: []
