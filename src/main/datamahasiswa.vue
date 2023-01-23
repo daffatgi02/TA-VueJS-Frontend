@@ -24,15 +24,11 @@
   </template>
   
   <script>
-  import createuser from './components/createuser.vue';
-  import updateuser from './components/updateuser.vue';
   import axios from 'axios';
   
   export default {
-    components:{
-      createuser,
-      updateuser
-    },
+    name: 'datamahasiswa',
+    components:{},
     data() {
       return {
         users: []

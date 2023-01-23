@@ -3,8 +3,7 @@
     <body class="font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover"
         style="background-image:url('https://pmb.ittelkom-sby.ac.id/cdn/environment/background.jpg');">
         <div class="max-w-4xl flex items-center lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
-            <div id="profile"
-                class="w-full rounded-lg shadow-2xl bg-white opacity-75 mx-6 lg:mx-20">
+            <div id="profile" class="w-full rounded-lg shadow-2xl bg-white opacity-75 mx-6 lg:mx-20">
                 <div class="p-4 md:p-12 text-center lg:text-left">
                     <h1 class="text-3xl font-bold pt-8 lg:pt-0">DATA MAHASISWA</h1>
                     <div class="mx-auto lg:mx-0 w-5/5 pt-2 border-b-2 border-red-500 opacity-25"></div>
@@ -22,7 +21,10 @@
                         </svg> Jl. Ketintang No.156, Ketintang, Kec. Gayungan, Kota SBY, Jawa Timur 60231
                     </p>
                     <div class="pt-12 pb-8">
-                        <button class="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full">MASUK</button>
+                        <router-link to="/datamahasiswa"
+                            class="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full">
+                            MASUK
+                        </router-link>
                     </div>
                 </div>
             </div>

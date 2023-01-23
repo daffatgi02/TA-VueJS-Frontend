@@ -7,7 +7,7 @@ import Homepage from './components/Homepage.vue'
 
 export default {
   components: {
-    Homepage
+    Homepage,
   }
 }
 </script>
