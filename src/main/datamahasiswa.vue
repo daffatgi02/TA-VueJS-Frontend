@@ -17,10 +17,6 @@
       </table>
       <button @click="getUsers">Get Users</button>
     </div>
-    <createuser />
-    <updateuser />
-   
-  
   </template>
   
   <script>

@@ -1,5 +1,4 @@
 <template>
-
     <body class="font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover"
         style="background-image:url('https://pmb.ittelkom-sby.ac.id/cdn/environment/background.jpg');">
         <div class="max-w-4xl flex items-center lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
@@ -21,7 +20,7 @@
                         </svg> Jl. Ketintang No.156, Ketintang, Kec. Gayungan, Kota SBY, Jawa Timur 60231
                     </p>
                     <div class="pt-12 pb-8">
-                        <router-link to="/datamahasiswa"
+                        <router-link to="/dashboard"
                             class="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full">
                             MASUK
                         </router-link>
