@@ -26,7 +26,7 @@
                     </p>
 
                     <div class="pt-12 pb-8">
-                        <button href="./src/components/manajemen.vue" class="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full">
+                        <button class="bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded-full">
                             MASUK
                         </button>
                     </div>
