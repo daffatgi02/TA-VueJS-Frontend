@@ -32,12 +32,19 @@
             </div>
         </div>
     </transition>
+    <div>
+    <Notification ref="notification" />
+  </div>
 </template>
 
 <script>
+import Notification from './Notification.vue'
 import axios from 'axios';
 export default {
     name: 'modal',
+    components:{
+        Notification
+    },
     props: {
         show: {
             type: Boolean,
@@ -57,6 +64,7 @@ export default {
             axios.post('http://localhost:3000/users/', { nim: this.nim, nama: this.nama, email: this.email })
                 .then(response => {
                     this.users.push(response.data);
+                    this.$refs.notification.show("Successfully created new user!");
                     this.$emit('close');
                 })
                 .catch(error => {
