@@ -4,7 +4,6 @@ import App from "./App.vue";
 import Admin from "./main/datamahasiswa.vue";
 import Home from "./components/Homepage.vue"
 import "./index.css";
-
 const routes = [
   { path: "/", component: Home },
   { path: "/dashboard", component: Admin },
@@ -14,5 +13,4 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
-
 createApp(App).use(router).mount("#app");

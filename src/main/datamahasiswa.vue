@@ -21,9 +21,25 @@
                 <td>{{ user.email }}</td>
               </tr>
             </table>
+            <button @click="showModal = true" class="bg-blue-500 px-4 py-2 rounded-lg text-white">Create</button>
+            <modal v-if="showModal" @close="showModal = false">
+              <h3 slot="header">New User</h3>
+              <div slot="body">
+                <label>NIM:</label>
+                <input v-model="newUser.nim" type="text" placeholder="NIM">
+                <label>Nama:</label>
+                <input v-model="newUser.nama" type="text" placeholder="Nama">
+                <label>Email:</label>
+                <input v-model="newUser.email" type="email" placeholder="Email">
+              </div>
+              <div slot="footer">
+                <button @click="createUser">Save</button>
+                <button @click="showModal = false">Cancel</button>
+              </div>
+            </modal>
           </div>
-
         </div>
+
       </div>
     </div>
   </body>
@@ -34,18 +50,39 @@
 
 <script>
 import axios from 'axios';
+import modal from './modal.vue';
+
 export default {
   name: 'datamahasiswa',
-  components: {},
+  components: {
+    modal
+  },
   data() {
     return {
-      users: []
+      users: [],
+      showModal: false,
+      newUser: {
+        nim: '',
+        nama: '',
+        email: ''
+      }
     }
   },
   created() {
-    axios.get('http://localhost:3000/users')
+    axios.get('http://localhost:3000/users/')
       .then(response => this.users = response.data)
       .catch(error => console.error(error))
   },
+  methods: {
+    createUser() {
+      axios.post('http://localhost:3000/users', this.newUser)
+        .then(response => {
+          this.users.push(response.data);
+          this.newUser = {};
+          this.showModal = false;
+        })
+        .catch(error => console.error(error))
+    }
+  }
 }
 </script>
