@@ -20,7 +20,7 @@ export default {
     },
     hide() {
       this.showNotification = false;
-      this.message = '';
+      this.message = 'Tes';
     }
   }
 }
