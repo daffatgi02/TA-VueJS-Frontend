@@ -56,10 +56,11 @@
             </div>
           </div>
           <div class="flex fixed">
-            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mx-2"
+            <button class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md"
               @click="showModal = true">Tambah</button>
-            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mx-2"
-              @click="deleteSelectedData">Hapus</button>
+            <button class="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md"
+              @click="deleteSelectedData">
+              Hapus</button>
           </div>
         </div>
       </div>
@@ -105,8 +106,9 @@ export default {
           this.nim = "";
           this.nama = "";
           this.email = "";
-          this.showModal = false;
           this.success = true;
+          location.reload();
+          this.showModal = false;
         })
         .catch((error) => {
           console.log(error);
