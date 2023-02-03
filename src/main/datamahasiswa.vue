@@ -1,9 +1,10 @@
 <template>
 
   <body class="font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover" style="
-      background-image: url('https://pmb.ittelkom-sby.ac.id/cdn/environment/background.jpg');
-    ">
+        background-image: url('https://pmb.ittelkom-sby.ac.id/cdn/environment/background.jpg');">
     <div>
+
+      <!-- CREATEUSER -->
       <div>
         <modal v-if="showModal" @close="showModal = false"
           class="fixed top-0 left-0 h-full w-full z-50 flex items-center justify-center">
@@ -27,7 +28,13 @@
           </div>
         </modal>
       </div>
+      <!-- END OF CREATEUSER -->
 
+      <!-- DELETEDUSER -->
+
+      <!-- END OF DELETEDUSER -->
+
+      <!-- BODYUTAMA -->
       <div class="max-w-4xl flex items-center lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
         <div id="profile" class="w-full rounded-lg shadow-2xl bg-white opacity-75 mx-6 lg:mx-20">
           <div class="p-4 md:p-12 text-center lg:text-left">
@@ -56,17 +63,21 @@
             </div>
           </div>
           <div class="flex fixed">
-            <button class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md"
+            <button
+              class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md"
               @click="showModal = true">Tambah</button>
-            <button class="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md"
+            <button
+              class="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-md"
               @click="deleteSelectedData">
               Hapus</button>
           </div>
         </div>
       </div>
+      <!-- END OF BODYUTAMA -->
+
+
+
     </div>
-
-
   </body>
 </template>
 
@@ -114,6 +125,13 @@ export default {
           console.log(error);
         });
     },
+    deleteUser() {
+      if (this.selected.length) {
+        this.showModal = true;
+      } else {
+        alert("Tidak ada user yang dipilih untuk dihapus");
+      }
+    },
     deleteSelectedData() {
       this.selected.forEach(id => {
         axios.delete(`http://localhost:3000/users/${id}`)
@@ -123,7 +141,11 @@ export default {
           .catch(error => console.error(error));
       });
       this.selected = [];
+      this.showModal = false;
     },
+    closeModal() {
+      this.showModal = false;
+    }
   },
 };
 </script>
