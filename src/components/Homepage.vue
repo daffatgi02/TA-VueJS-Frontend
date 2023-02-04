@@ -30,27 +30,8 @@
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="notificationModalLabel">Notifikasi</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">{{ notification }}</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </template>
 <script>
-import $ from 'jquery';
 export default {
     data() {
         return {
@@ -61,17 +42,23 @@ export default {
     },
     methods: {
         login() {
-            if (this.username === "admin" && this.password === "password") {
+            if (this.username === "admin" && this.password === "daffa123") {
                 this.notification = "Login berhasil!";
-                $("#notificationModal").modal("show");
+                alert(this.notification);
+                setTimeout(() => {
+                    this.$router.push('/dashboard');
+                }, 1000);
             } else {
-                this.notification = "Login gagal, silakan coba lagi.";
-                $("#notificationModal").modal("show");
+                this.notification = "Password Salah!, silakan coba lagi.";
+                alert(this.notification);
             }
         },
     },
 };
 </script>
+
+
+
 <style>
 body {
     background: #c93232;

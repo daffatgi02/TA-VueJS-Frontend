@@ -8,11 +8,25 @@ import 'bootstrap/dist/js/bootstrap.js'
 
 const routes = [
   { path: "/", component: Home },
-  { path: "/dashboard", component: Admin },
+  { path: "/dashboard", component: Admin, meta: { requiresAuth: true } },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth) {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn) {
+      next();
+    } else {
+      next("/");
+    }
+  } else {
+    next();
+  }
+});
+
 createApp(App).use(router).mount("#app");
