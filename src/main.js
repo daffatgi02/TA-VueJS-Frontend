@@ -12,8 +12,8 @@ import 'bootstrap/dist/js/bootstrap.js'
 const routes = [
   { path: "/", component: Home },
   { path: "/dashboard", component: Admin},
-  { path: "/ce0301", component: Kelas1},
-  { path: "/ce0302", component: Kelas2},
+  { path: "/dashboard/ce0301", component: Kelas1},
+  { path: "/dashboard/ce0302", component: Kelas2},
 ];
 
 const router = createRouter({

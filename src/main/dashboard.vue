@@ -18,10 +18,10 @@
         <div class="menu">
           <ul class="menu-links">
             <li class="nav-link">
-              <a href="#">
+              <a href="/dashboard">
                 <i class='bx bx-user-circle icon'></i>
                 <span class="text nav-text">
-                  <router-link to="/dashboard">Home</router-link>
+                  Home
                 </span>
               </a>
             </li>
@@ -30,13 +30,19 @@
               <a href="#">
                 <i class='bx bx-bar-chart-alt-2 icon'></i>
                 <span class="text nav-text">
-                  <router-link to="/ce0301">Kelas</router-link>
+                  Kelas
                 </span>
               </a>
+              <ul class="sub-menu">
+                <li><a href="/dashboard/ce0301">Kelas 1</a></li>
+                <li><a href="/dashboard/ce0302">Kelas 2</a></li>
+              </ul>
             </li>
+
+
+
           </ul>
         </div>
-
         <div class="bottom-content">
           <li class="">
             <a href="/">
@@ -66,12 +72,13 @@
       <div class="text">Dashboard Data Mahasiswa</div>
     </section>
   </body>
+  <router-view></router-view>
 </template>
 
 <script>
 export default {
   name: "dashboard",
-  components:{
+  components: {
   },
   mounted() {
     const body = document.querySelector('body');
@@ -95,6 +102,8 @@ export default {
   },
 };
 </script>
+
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -129,6 +138,37 @@ body {
   background-color: var(--primary-color);
   color: #fff;
 }
+
+.nav-link {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.sub-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  background-color: #f1f1f1;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  min-width: 160px;
+}
+
+.sub-menu a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.nav-link:hover .sub-menu {
+  display: block;
+}
+
+
+
 
 body.dark {
   --body-color: #18191a;
