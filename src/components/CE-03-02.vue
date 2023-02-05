@@ -1,172 +1,219 @@
 <template>
-    <div>
-      <body>
+
+    <body class="font-sans text-gray-900 bg-cover">
         <div class="container my-5">
-          <h1 class="text-center mb-5">DATA MAHASISWA</h1>
-          <div class="row d-flex justify-content-center mb-3">
-            <div class="col-md-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title text-center">KELAS CE-03-02</h5>
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>NIM</th>
-                        <th>NAMA</th>
-                        <th>EMAIL</th>
-                        <th>Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr v-for="(user, index) in users">
-                        <td>{{ index + 1 }}</td>
-                        <td>{{ user.nim }}</td>
-                        <td>{{ user.nama }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>
-                          <button class="btn btn-warning btn-sm mr-2" @click="editUser(user.id)">Edit</button>
-                          <button class="btn btn-danger btn-sm bi bi-trash" @click="deleteUser(user.id)">Hapus</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <button class="btn btn-primary btn-sm float-right my-3" @click="addUser">Tambah</button>
+            <!-- EDITUSER -->
+            <div v-if="showModal2">
+                <div class="modal d-flex align-items-center">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="text-center font-bold">EDIT MAHASISWA</h3>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" v-model="nim" placeholder="NIM" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" v-model="nama" placeholder="Nama" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" v-model="email" placeholder="Email" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-between">
+                                <button class="btn btn-primary" @click="updateData">
+                                    EDIT
+                                </button>
+                                <button class="btn btn-secondary" @click="showModal2 = false">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-        <!--notif delete-->
-        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus Data</h5>
-                <button type="button" class="close" data-dismiss="modal" @click="closeModal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                Apakah Anda yakin ingin menghapus data ini?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeModal">Batal</button>
-                <button type="button" class="btn btn-danger" @click="confirmDelete">Hapus</button>
-              </div>
+            <!-- END OF EDITUSER -->
+            <!-- CREATEUSER -->
+            <div v-if="showModal">
+                <div class="modal d-flex align-items-center">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="text-center font-bold">TAMBAH MAHASISWA</h3>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" v-model="nim" placeholder="NIM" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" v-model="nama" placeholder="Nama" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" v-model="email" placeholder="Email" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-between">
+                                <button class="btn btn-primary" @click="submitData">
+                                    Create
+                                </button>
+                                <button class="btn btn-secondary" @click="showModal = false">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <!-- END OF CREATEUSER -->
+            <!-- BODYUTAMA -->
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h1 class="text-center font-bold">KELAS CE-03-02</h1>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>NIM</th>
+                                <th>NAMA</th>
+                                <th>EMAIL</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="user in users" :key="user.id">
+                                <td>
+                                    <input type="checkbox" v-model="selected" :value="user.id" />
+                                </td>
+                                <td>{{ user.nim }}</td>
+                                <td>{{ user.nama }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>
+                                    <button @click="editUser(user)" class="btn btn-primary mx-2">
+                                        Edit
+                                    </button>
+                                    <button @click="deleteSelectedData(user.id)" class="btn btn-danger">
+                                        Hapus
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <button class="btn btn-success" @click="showModal = true">
+                        Tambah Mahasiswa
+                    </button>
+                </div>
+            </div>
+            <!-- END OF BODYUTAMA -->
         </div>
-      </body>
-    </div>
-  </template>
-  
-  <script>
-  import axios from "axios";
-  export default {
+    </body>
+</template>
+
+<script>
+import axios from "axios";
+export default {
+    name: "datamahasiswa",
+    components: {},
     data() {
-      return {
-        users: [],
-        user: {
-          id: "",
-          nim: "",
-          nama: "",
-          email: ""
-        },
-        showModal: false
-      };
+        return {
+            users: [],
+            selected: [],
+            showModal: false,
+            showModal2: false,
+            success: false,
+            nim: "",
+            nama: "",
+            email: "",
+        };
     },
-    mounted() {
-      this.getUsers();
+    created() {
+        axios
+            .get("http://localhost:3000/users/")
+            .then((response) => (this.users = response.data))
+            .catch((error) => console.error(error));
     },
     methods: {
-      async getUsers() {
-        try {
-          const response = await axios.get("http://localhost:3000/users/");
-          this.users = response.data;
-        } catch (error) {
-          console.error(error);
+        submitData() {
+            axios
+                .post("http://localhost:3000/users/", {
+                    nim: this.nim,
+                    nama: this.nama,
+                    email: this.email,
+                })
+                .then((response) => {
+                    this.users.push(response.data);
+                    this.nim = "";
+                    this.nama = "";
+                    this.email = "";
+                    this.success = true;
+                    location.reload();
+                    this.showModal = false;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+        deleteUser() {
+            if (this.selected.length) {
+                this.showModal = true;
+            } else {
+                alert("Tidak ada user yang dipilih untuk dihapus");
+            }
+        },
+        deleteSelectedData() {
+            this.selected.forEach((id) => {
+                axios
+                    .delete(`http://localhost:3000/users/${id}`)
+                    .then((response) => {
+                        this.users = this.users.filter((user) => user.id !== id);
+                    })
+                    .catch((error) => console.error(error));
+            });
+            this.selected = [];
+            this.showModal = false;
+        },
+        closeModal() {
+            this.showModal = false;
+        },
+        editUser() {
+            if (this.selected.length === 1) {
+                const id = this.selected[0];
+                const selectedUser = this.users.find(user => user.id === id);
+                this.nim = selectedUser.nim;
+                this.nama = selectedUser.nama;
+                this.email = selectedUser.email;
+                this.showModal2 = true;
+            } else {
+                alert("Pilih satu user untuk diubah");
+            }
+        },
+        updateData() {
+            const id = this.selected[0];
+            axios.patch(`http://localhost:3000/users/${id}`, {
+                    nim: this.nim,
+                    nama: this.nama,
+                    email: this.email
+                })
+                .then((response) => {
+                    const updatedUser = response.data;
+                    this.users = this.users.map(user => user.id === id ? updatedUser : user);
+                    this.nim = "";
+                    this.nama = "";
+                    this.email = "";
+                    this.selected = [];
+                    this.showModal2 = false;
+                    location.reload();
+                })
+                .catch((error) => console.error(error));
         }
-      },
-      addUser() {
-        this.showModal = true;
-      },
-      closeModal() {
-        $("#confirmDeleteModal").modal("hide");
-      },
-      async saveUser() {
-        try {
-          const response = await axios.post("http://localhost:3000/users/", {
-            nim: this.user.nim,
-            nama: this.user.nama,
-            email: this.user.email
-          });
-          this.users.push(response.data);
-          this.user.nim = "";
-          this.user.nama = "";
-          this.user.email = "";
-          this.showModal = false;
-        } catch (error) {
-          console.error(error);
-        }
-      },
-      async deleteUser(id) {
-        $("#confirmDeleteModal").modal("show");
-        this.selectedId = id;
-      },
-      async confirmDelete() {
-        try {
-          await axios.delete(`http://localhost:3000/users/${this.selectedId}`);
-          this.users = this.users.filter(user => user.id !== this.selectedId);
-          $("#confirmDeleteModal").modal("hide");
-        } catch (error) {
-          console.error(error);
-        }
-      },
-      async editUser(id) {
-        try {
-          const response = await axios.get(`http://localhost:3000/users/${id}`);
-          this.user = response.data;
-          this.showModal = true;
-        } catch (error) {
-          console.error(error);
-        }
-      },
-      async updateUser() {
-        try {
-          await axios.put(`http://localhost:3000/users/${this.user.id}`, {
-            nim: this.user.nim,
-            nama: this.user.nama,
-            email: this.user.email
-          });
-          this.getUsers();
-          this.user.id = "";
-          this.user.nim = "";
-          this.user.nama = "";
-          this.user.email = "";
-          this.showModal = false;
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    }
-  };
-  </script>
-  
-  
-  <style scoped>
-  .container {
-    max-width: 12000px;
-    margin: 0 auto;
-  }
-  
-  .card {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .btn-sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.7rem;
-  }
-  </style>
+    },
+};
+</script>
