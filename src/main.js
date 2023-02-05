@@ -1,19 +1,18 @@
 import { createApp } from "vue";
 import { createWebHistory, createRouter } from "vue-router";
 import App from "./App.vue";
-import Admin from "./main/dashboard.vue";
-import Home from "./components/Homepage.vue";
-import Kelas1 from "./main/Kelas1.vue";
-import Kelas2 from "./main/kelas2.vue";
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.js'
-
+import Dashboard from "./components/homepage.vue";
+import Kelas from "./components/kelas.vue";
+import KelasCE0301 from "./components/CE-03-01.vue";
+import KelasCE0302 from "./components/CE-03-02.vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.js";
 
 const routes = [
-  { path: "/", component: Home },
-  { path: "/dashboard", component: Admin},
-  { path: "/dashboard/ce0301", component: Kelas1},
-  { path: "/dashboard/ce0302", component: Kelas2},
+  { path: "/", component: Dashboard },
+  { path: "/kelas", component: Kelas },
+  { path: "/ce-03-01", name:'ce0301', component: KelasCE0301 },
+  { path: "/ce-03-02", name:'ce0302', component: KelasCE0302 },
 ];
 
 const router = createRouter({
