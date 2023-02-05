@@ -1,4 +1,5 @@
 <template>
+  <body>
     <div class="container my-5">
       <h1 class="text-center mb-5">Selamat Datang! <br>Data Mahasiswa KELAS 1</h1>
       <div class="row">
@@ -12,12 +13,16 @@
         </div>
       </div>
     </div>
+  </body>
   </template>
   
-  <script>
+  <script scoped>
+  import dashboard from './dashboard.vue'
   export default {
     name: "Kelas1",
-    components: {},
+    components: {
+      dashboard
+    },
     methods: {
     },
   };

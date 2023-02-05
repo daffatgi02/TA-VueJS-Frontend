@@ -8,6 +8,7 @@ import Kelas2 from "./main/kelas2.vue";
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
 
+
 const routes = [
   { path: "/", component: Home },
   { path: "/dashboard", component: Admin},

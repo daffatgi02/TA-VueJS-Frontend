@@ -1,35 +1,37 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 col-xl-9 mx-auto">
-                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
-                    <div class="card-img-left d-none d-md-flex"></div>
-                    <div class="card-body p-4 p-sm-5">
-                        <h5 class="card-title text-center mb-5 fw-light fs-5">LOGIN ADMIN</h5>
-                        <form @submit.prevent="login">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="inputUsername" v-model="username"
-                                    placeholder="myusername" required autofocus />
-                                <label for="inputUsername">Username</label>
-                            </div>
-                            <hr />
-                            <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="inputPassword" v-model="password"
-                                    placeholder="Password" />
-                                <label for="inputPassword">Password</label>
-                            </div>
-                            <div class="d-grid mb-2">
-                                <button class="btn btn-lg btn-outline-danger btn-login fw-bold text-uppercase"
-                                    type="submit">
-                                    LOGIN
-                                </button>
-                            </div>
-                        </form>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-xl-9 mx-auto">
+                    <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                        <div class="card-img-left d-none d-md-flex"></div>
+                        <div class="card-body p-4 p-sm-5">
+                            <h5 class="text-center mb-5 fs-5">LOGIN ADMIN</h5>
+                            <form @submit.prevent="login">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="inputUsername" v-model="username"
+                                        placeholder="myusername" required autofocus />
+                                    <label for="inputUsername">Username</label>
+                                </div>
+                                <hr />
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="inputPassword" v-model="password"
+                                        placeholder="Password" />
+                                    <label for="inputPassword">Password</label>
+                                </div>
+                                <div class="d-grid mb-2">
+                                    <button class="btn btn-lg btn-outline-danger btn-login fw-bold text-uppercase"
+                                        type="submit">
+                                        LOGIN
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div>    
+    </body>
 </template>
 <script>
 export default {
@@ -57,14 +59,12 @@ export default {
 };
 </script>
 
+<style scoped>
 
-
-<style>
 body {
-    background: #c93232;
-    background: linear-gradient(to right, #910808, #b92b2b);
+    min-height: 100vh;
+    background-color: #d63942;
 }
-
 .card-img-left {
     width: 45%;
     background: scroll center url('https://lh3.googleusercontent.com/p/AF1QipPvCj5sNzIZaMkdju3YPwlDtUvZUErZOov98eVP=s680-w680-h510');
@@ -75,5 +75,8 @@ body {
     font-size: 0.9rem;
     letter-spacing: 0.05rem;
     padding: 0.75rem 1rem;
+}
+h5{
+    font-weight: bold;
 }
 </style>
