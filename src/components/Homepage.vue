@@ -1,4 +1,5 @@
 <template>
+
     <body>
         <div class="container">
             <div class="row">
@@ -30,7 +31,7 @@
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
     </body>
 </template>
 <script>
@@ -60,11 +61,11 @@ export default {
 </script>
 
 <style scoped>
-
 body {
-    min-height: 100vh;
-    background-color: #d63942;
+    background-position: auto;
+    background-image: url("../background.jpg");
 }
+
 .card-img-left {
     width: 45%;
     background: scroll center url('https://lh3.googleusercontent.com/p/AF1QipPvCj5sNzIZaMkdju3YPwlDtUvZUErZOov98eVP=s680-w680-h510');
@@ -76,7 +77,8 @@ body {
     letter-spacing: 0.05rem;
     padding: 0.75rem 1rem;
 }
-h5{
+
+h5 {
     font-weight: bold;
 }
 </style>

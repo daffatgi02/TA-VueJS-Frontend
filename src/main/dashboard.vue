@@ -39,8 +39,6 @@
               </ul>
             </li>
 
-
-
           </ul>
         </div>
         <div class="bottom-content">
@@ -67,9 +65,13 @@
       </div>
 
     </nav>
-
     <section class="home">
       <div class="text">Dashboard Data Mahasiswa</div>
+      <div>
+        <h1 class="text-center">
+          SELAMAT DATANG
+        </h1>
+      </div>
     </section>
   </body>
   <router-view></router-view>
