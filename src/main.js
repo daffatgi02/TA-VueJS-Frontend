@@ -5,7 +5,6 @@ import Dashboard from "./components/homepage.vue";
 import Kelas from "./components/kelas.vue";
 import KelasCE0301 from "./components/CE-03-01.vue";
 import KelasCE0302 from "./components/CE-03-02.vue";
-import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
@@ -20,7 +19,4 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
-const app = createApp(App);
-app.use(BootstrapVue);
-app.use(router);
-app.mount("#app");
+createApp(App).use(router).mount("#app");
