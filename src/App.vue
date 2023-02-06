@@ -33,6 +33,12 @@
             </ul>
           </li>
           <li>
+            <router-link to="/about">
+              <i class="bx bx-book"></i>
+              <span class="link_name">About</span>
+            </router-link>
+          </li>
+          <li>
             <a href="/">
               <i class="bx bx-log-out"></i>
               <span class="link_name">Logout</span>
@@ -80,6 +86,7 @@ export default {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 
 .sidebar {
   position: fixed;

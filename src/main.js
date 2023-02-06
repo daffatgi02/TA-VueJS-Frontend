@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import { createWebHistory, createRouter } from "vue-router";
 import App from "./App.vue";
 import Dashboard from "./components/homepage.vue";
+import About from "./components/about.vue";
 import Login from "./components/loginpage.vue";
 import Kelas from "./components/kelas.vue";
 import KelasCE0301 from "./components/CE-03-01.vue";
@@ -11,6 +12,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 const routes = [
   { path: "/", component: Login },
+  { path: "/About", component: About },
   { path: "/dashboard", component: Dashboard },
   { path: "/kelas", component: Kelas },
   { path: "/ce-03-01", name:'ce0301', component: KelasCE0301 },

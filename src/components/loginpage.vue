@@ -57,6 +57,8 @@ export default {
         },
     },
 };
+
+
 </script>
 
 <style scoped>
@@ -64,4 +66,9 @@ export default {
         background-image: url('https://lh3.googleusercontent.com/p/AF1QipPvCj5sNzIZaMkdju3YPwlDtUvZUErZOov98eVP=s680-w680-h510');
         width: 42%;
     }
+    body {
+  background-image: url('../assets/bg.jpg');
+  background-position: 100%;
+  background-size: auto;
+}
 </style>
