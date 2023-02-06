@@ -80,7 +80,9 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>NIM</th>
+                                <th><button style="background: white; border-color: white; box-shadow: none; font-weight: bold;" @click="sortedUsers()">
+                                    NIM
+                                </button></th>
                                 <th>NAMA</th>
                                 <th>EMAIL</th>
                                 <th>ACTIONS</th>
@@ -132,6 +134,19 @@ import axios from "axios";
 export default {
     name: "datamahasiswa",
     components: {},
+    computed: {
+    sortedUsers() {
+      return this.users.sort((a, b) => {
+        if (a.nim < b.nim) {
+          return -1;
+        }
+        if (a.nim > b.nim) {
+          return 1;
+        }
+        return 0;
+      });
+    }
+  },
     data() {
         return {
             users: [],

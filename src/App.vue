@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <!--SIDEBAR-->
+
     <body>
       <div class="sidebar close">
         <div class="logo-details">
@@ -9,32 +10,41 @@
         </div>
         <ul class="nav-links">
           <li>
-            <a href="/">
+            <router-link to="/dashboard">
               <i class="bx bx-grid-alt"></i>
               <span class="link_name">Dashboard</span>
-            </a>
+            </router-link>
           </li>
           <li>
             <div class="iocn-link">
-              <a href="/kelas">
+              <router-link to="/kelas">
                 <i class="bx bx-collection"></i>
                 <span class="link_name">Kelas</span>
-              </a>
+              </router-link>
               <i class="bx bxs-chevron-down arrow"></i>
             </div>
+
             <ul class="sub-menu">
               <li><a class="link_name" href="/kelas">KELAS</a></li>
-              <li><RouterLink to="/ce-03-01">CE-03-01</RouterLink></li>
+              <li>
+                <RouterLink to="/ce-03-01">CE-03-01</RouterLink>
+              </li>
               <li><router-link to="/ce-03-02">CE-03-02</router-link></li>
             </ul>
+          </li>
+          <li>
+            <a href="/">
+              <i class="bx bx-log-out"></i>
+              <span class="link_name">Logout</span>
+            </a>
           </li>
         </ul>
       </div>
       <div class="home-section">
-      <div class="home-content">
-        <i class="bx bx-menu"></i>
+        <div class="home-content">
+          <i class="bx bx-menu"></i>
+        </div>
       </div>
-    </div>
     </body>
     <router-view />
   </div>
@@ -318,7 +328,7 @@ export default {
   transition: all 0.5s ease;
 }
 
-.sidebar.close ~ .home-section {
+.sidebar.close~.home-section {
   left: 78px;
   width: calc(100% - 78px);
 }
@@ -350,5 +360,4 @@ export default {
     display: none;
   }
 }
-
 </style>
